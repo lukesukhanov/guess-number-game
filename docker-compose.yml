@@ -1,0 +1,51 @@
+version: "3.5"
+
+networks:
+
+  internet:
+    name: internet
+    driver: bridge
+  
+  appnet:
+    name: appnet
+    driver: bridge
+
+services:
+
+  web:
+    container_name: web
+    image: lukesv/guess-number-game-web:1.0
+    networks:
+      - internet
+      - appnet
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    depends_on:
+      - player-service
+
+  player-service:
+    container_name: player-service
+    image: lukesv/guess-number-game-player-service:1.0
+    networks:
+      - appnet
+    ports:
+      - "8082:80"
+    environment:
+      spring.profiles.active: prod
+      spring.datasource.username: postgres
+      spring.datasource.password: secret
+    restart: unless-stopped
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    networks:
+      - appnet
+    environment:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    restart: unless-stopped
