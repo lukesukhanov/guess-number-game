@@ -14,7 +14,7 @@ services:
 
   web:
     container_name: web
-    image: lukesv/guess-number-game-web:1.0
+    image: lukesv/guess-number-game-web
     networks:
       - internet
       - appnet
@@ -26,7 +26,7 @@ services:
 
   player-service:
     container_name: player-service
-    image: lukesv/guess-number-game-player-service:1.0
+    image: lukesv/guess-number-game-player-service
     networks:
       - appnet
     ports:
