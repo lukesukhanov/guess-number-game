@@ -12,8 +12,8 @@ Execute 'docker-compose up -d' in the directory with docker-compose.yml.
 <p>
 The following services will start:
 <ul>
-  <li><b>web</b> on 127.0.0.1:8081 (frontend)</li>
-  <li><b>player-service</b> on 127.0.0.1:8082 (REST API)</li>
+  <li><b>web</b> on 127.0.0.1:8081 (frontend, API URL set on 127.0.0.1:8082)</li>
+  <li><b>player-service</b> on 127.0.0.1:8082 (REST API, CORS set on 127.0.0.1:8081)</li>
 </ul>
 
 See also:
