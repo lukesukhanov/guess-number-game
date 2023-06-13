@@ -8,7 +8,7 @@ Each player has the id, the username and the count of his best attempts.<br />
 The player can register, login and logout.
 
 ## How to run the game
-Execute 'docker-compose up -d' in the directory with docker-compose.yml.
+Execute 'docker-compose up -d' in the directory with docker-compose.yaml.
 <p>
 The following services will start:
 <ul>
