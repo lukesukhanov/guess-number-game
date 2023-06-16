@@ -32,7 +32,6 @@ services:
     ports:
       - "8082:80"
     environment:
-      spring.profiles.active: prod
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
       POSTGRES_SCHEMA: guess_number_game
