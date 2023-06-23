@@ -39,7 +39,7 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres::alpine3.18
     networks:
     - appnet
     environment:
