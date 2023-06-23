@@ -1,7 +1,6 @@
 version: "3.5"
 
 networks:
-
   internet:
     name: internet
     driver: bridge
@@ -11,39 +10,38 @@ networks:
     driver: bridge
 
 services:
-
   web:
     container_name: web
     image: lukesv/guess-number-game-web
     networks:
-      - internet
-      - appnet
+    - internet
+    - appnet
     ports:
-      - "8081:80"
+    - "8081:80"
     restart: unless-stopped
     depends_on:
-      - player-service
+    - player-service
 
   player-service:
     container_name: player-service
     image: lukesv/guess-number-game-player-service
     networks:
-      - appnet
+    - appnet
     ports:
-      - "8082:80"
+    - "8082:80"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
       POSTGRES_SCHEMA: guess_number_game
     restart: unless-stopped
     depends_on:
-      - postgres
+    - postgres
 
   postgres:
     container_name: postgres
     image: postgres
     networks:
-      - appnet
+    - appnet
     environment:
       POSTGRES_DATABASE: postgres
       POSTGRES_USER: postgres
